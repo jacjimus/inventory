@@ -2,11 +2,9 @@
 
 if (!function_exists('settings')) {
     function settings() {
-        $settings = cache()->remember('settings', 24*60, function () {
+        return cache()->remember('settings', 24*60, function () {
             //return \Modules\Setting\Entities\Setting::firstOrFail();
         });
-
-        return $settings;
     }
 }
 
@@ -18,7 +16,8 @@ if (!function_exists('format_currency')) {
 
         $settings = settings();
         $position = $settings->default_currency_position ?? '2';
-        $symbol = $settings->currency->symbol ?? ' $';
+       // $symbol = $settings->currency->symbol ?? ' Ksh';
+        $symbol = 'Ksh ';
         $decimal_separator = $settings->currency->decimal_separator ?? '.';
         $thousand_separator = $settings->currency->thousand_separator ?? ',';
 
